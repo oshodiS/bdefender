@@ -1,11 +1,8 @@
 package enemies.pool;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import enemies.EnemyBase;
-import map.MapInteractor;
 import towers.Pair;
 
 

@@ -1,4 +1,4 @@
-package map;
+package enemies.pool;
 
 import java.util.List;
 
