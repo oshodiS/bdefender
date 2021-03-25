@@ -1,9 +1,9 @@
-package enemies.pool;
+package com.bdefender.enemies.pool;
+
+
+import com.bdefender.Pair;
 
 import java.util.List;
-
-import towers.Pair;
-
 
 public interface MapInteractor {
 	

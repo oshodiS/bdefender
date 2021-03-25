@@ -1,6 +1,7 @@
-package enemies;
+package com.bdefender.enemies;
 
-import towers.Pair;
+
+import com.bdefender.Pair;
 
 public class EnemyFactory {
 	

@@ -1,9 +1,9 @@
-package enemies.pool;
+package com.bdefender.enemies.pool;
+import com.bdefender.Pair;
+import com.bdefender.enemies.EnemyBase;
 
 import java.util.ArrayList;
 
-import enemies.EnemyBase;
-import towers.Pair;
 
 
 public class EnemiesPoolImpl implements EnemiesPoolInteractor, EnemiesPoolMover, EnemiesPoolSpawner  {

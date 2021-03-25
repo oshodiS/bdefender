@@ -1,4 +1,4 @@
-package enemies.pool;
+package com.bdefender.enemies.pool;
 
 public interface EnemiesPoolMover {
 	

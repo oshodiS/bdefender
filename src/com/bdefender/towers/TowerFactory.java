@@ -1,12 +1,14 @@
-package towers;
+package com.bdefender.towers;
 import java.util.Map;
 import java.util.Set;
 
-import enemies.pool.EnemiesPoolInteractor;
-import towers.controllers.EnemyControllerDirect;
-import towers.controllers.EnemyControllerDirectImpl;
-import towers.controllers.EnemyControllerZone;
-import towers.controllers.EnemyControllerZoneImpl;
+import com.bdefender.Pair;
+import com.bdefender.enemies.pool.EnemiesPoolInteractor;
+import com.bdefender.towers.controllers.EnemyControllerDirect;
+import com.bdefender.towers.controllers.EnemyControllerDirectImpl;
+import com.bdefender.towers.controllers.EnemyControllerZone;
+import com.bdefender.towers.controllers.EnemyControllerZoneImpl;
+
 
 public class TowerFactory {
 	

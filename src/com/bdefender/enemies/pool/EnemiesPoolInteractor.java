@@ -1,8 +1,8 @@
-package enemies.pool;
+package com.bdefender.enemies.pool;
+
+import com.bdefender.enemies.EnemyBase;
 
 import java.util.ArrayList;
-
-import enemies.EnemyBase;
 
 public interface EnemiesPoolInteractor {
 	ArrayList<EnemyBase> getEnemies();

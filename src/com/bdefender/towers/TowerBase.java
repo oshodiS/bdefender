@@ -1,4 +1,4 @@
-package towers;
+package com.bdefender.towers;
 
 import java.util.Set;
 

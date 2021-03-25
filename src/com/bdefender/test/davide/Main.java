@@ -1,11 +1,11 @@
-package test.davide;
+package com.bdefender.test.davide;
 
-import enemies.EnemyFactory;
-import enemies.pool.EnemiesPoolImpl;
-import enemies.pool.EnemiesPoolMover;
-import towers.Pair;
-import towers.TowerBase;
-import towers.TowerFactory;
+import com.bdefender.Pair;
+import com.bdefender.enemies.EnemyFactory;
+import com.bdefender.enemies.pool.EnemiesPoolImpl;
+import com.bdefender.enemies.pool.EnemiesPoolMover;
+import com.bdefender.towers.TowerBase;
+import com.bdefender.towers.TowerFactory;
 
 
 public class Main {
@@ -23,7 +23,7 @@ public class Main {
 		 
 		 TowerFactory tFactory = new TowerFactory();
 		 TowerBase tz1 = tFactory.getTowerZone1(pool, new Pair<>(5.0,5.0));
-		 TowerBase tz2 = tFactory.getTowerZone2(pool, new Pair<>(0.0,0.0));
+		 TowerBase tz2 = tFactory.getTowerZone2(pool, new Pair<>(15.0,0.0));
 		 
 		 Thread eThread = new EnemiesThread(pool);
 		 Thread tThread1 = new TowerThread(tz1);

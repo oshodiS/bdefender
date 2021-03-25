@@ -5,6 +5,7 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+
 public class Map extends ImageView {
 	
 	public final static int COUNTRYSIDE = 0;

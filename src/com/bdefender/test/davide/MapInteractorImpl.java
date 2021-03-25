@@ -1,11 +1,12 @@
-package test.davide;
+package com.bdefender.test.davide;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Set;
 
-import enemies.pool.MapInteractor;
-import towers.Pair;
+
+import com.bdefender.Pair;
+import com.bdefender.enemies.pool.MapInteractor;
+
 
 public class MapInteractorImpl implements MapInteractor {
 
