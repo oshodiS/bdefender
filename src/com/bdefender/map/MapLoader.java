@@ -51,6 +51,6 @@ public class MapLoader {
 	
 	private Coordinates parsePathLine(String line) {
 		String[] tmp = line.split("\\|");
-		return new Coordinates(Float.valueOf(tmp[0]), Float.valueOf(tmp[1]));
+		return new Coordinates(Double.valueOf(tmp[0]), Double.valueOf(tmp[1]));
 	}
 }

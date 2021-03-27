@@ -2,9 +2,9 @@ package com.bdefender.map;
 
 import com.bdefender.Pair;
 
-public class Coordinates extends Pair<Float, Float> {
+public class Coordinates extends Pair<Double, Double> {
 
-	public Coordinates(Float x, Float y) {
+	public Coordinates(Double x, Double y) {
 		super(x, y);
 	}
 
@@ -13,7 +13,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getLeftPixel() {
-		return Math.round(super.getX() * 32);
+		return (int) Math.round(super.getX() * 32);
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getCenterPixelX() {
-		return Math.round(super.getX()) * 32 + 16;
+		return (int) Math.round(super.getX()) * 32 + 16;
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getRightPixel() {
-		return Math.round(super.getX() * 32) + 32;
+		return (int) Math.round(super.getX() * 32) + 32;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getTopPixel() {
-		return Math.round(super.getY() * 32);
+		return (int) Math.round(super.getY() * 32);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getCenterPixelY() {
-		return Math.round(super.getY() * 32) + 16;
+		return (int) Math.round(super.getY() * 32) + 16;
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class Coordinates extends Pair<Float, Float> {
 	 * @return Pixel number
 	 */
 	public int getBottomPixel() {
-		return Math.round(super.getY() * 32) + 32;
+		return (int) Math.round(super.getY() * 32) + 32;
 	}
 	
 }
