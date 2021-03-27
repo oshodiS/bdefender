@@ -5,6 +5,7 @@ import com.bdefender.enemies.EnemyFactory;
 import com.bdefender.enemies.pool.EnemiesPoolImpl;
 import com.bdefender.enemies.pool.EnemiesPoolMover;
 import com.bdefender.map.Map;
+import com.bdefender.map.MapInteractorImpl;
 import com.bdefender.map.MapLoader;
 import com.bdefender.towers.TowerBase;
 import com.bdefender.towers.TowerFactory;

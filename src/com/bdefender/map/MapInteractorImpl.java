@@ -1,4 +1,4 @@
-package com.bdefender.test.davide;
+package com.bdefender.map;
 
 
 import java.util.ArrayList;
@@ -27,8 +27,9 @@ public class MapInteractorImpl implements MapInteractor {
 
 	@Override
 	public Pair<Integer, Integer> getStartingDirection() {
-		//implementazione fittizia
-		return new Pair<>(1, 0);
+		int initialX = map.getPath().get(0).getX().equals(map.getPath().get(1).getX()) ? 0 : 1;
+		int initialY = map.getPath().get(0).getY().equals(map.getPath().get(1).getY()) ? 0 : 1;
+		return new Pair<>(initialX, initialY);
 	}
 
 	@Override
