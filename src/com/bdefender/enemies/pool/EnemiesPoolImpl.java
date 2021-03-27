@@ -1,6 +1,7 @@
 package com.bdefender.enemies.pool;
 import com.bdefender.Pair;
 import com.bdefender.enemies.EnemyBase;
+import com.bdefender.map.Coordinates;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,12 @@ public class EnemiesPoolImpl implements EnemiesPoolInteractor, EnemiesPoolMover,
 		enemy.setDirection(this.mapInteractor.getStartingDirection());
 		enemies.add(enemy);
 	}
-	
+
+	@Override
+	public Coordinates getSpawnPoint() {
+		return mapInteractor.getSpawnPoint();
+	}
+
 	@Override
 	public void applyDamageById(final int id, Double damage) {
 		enemies.get(id).takeDamage(damage);
@@ -42,11 +48,13 @@ public class EnemiesPoolImpl implements EnemiesPoolInteractor, EnemiesPoolMover,
 		return new Pair<>(newX, newY);
 	}
 
-	private boolean isOverAPoint(Pair<Double, Double> p1, Pair<Double, Double> p2, Pair<Integer, Integer> dir){
-		return (p1.getX() - p2.getX()) * dir.getX() > 0 || (p1.getY() - p2.getY()) * dir.getY() > 0;
+
+
+	private boolean isAfterKeyPoint(Pair<Double, Double> p1, Pair<Double, Double> p2, Pair<Integer, Integer> dir){
+		return (((p1.getX() - p2.getX())  > 0 && dir.getX() == 1) || (p1.getX().equals(p2.getX()) && dir.getX() == 0 )) && (p1.getY() - p2.getY()) * dir.getY() >= 0;
 	}
 
-	private boolean isNotBeyondAPoint(Pair<Double, Double> p1, Pair<Double, Double> p2, Pair<Integer, Integer> dir){
+	private boolean keyPointIsAfter(Pair<Double, Double> p1, Pair<Double, Double> p2, Pair<Integer, Integer> dir){
 		return (p1.getX() >= p2.getX()) && (p1.getY() - p2.getY()) * dir.getY() >= 0;
 	}
 
@@ -59,30 +67,32 @@ public class EnemiesPoolImpl implements EnemiesPoolInteractor, EnemiesPoolMover,
 			Pair<Double, Double> currPos = enemy.getPosition();
 			Pair<Double, Double> nxtPos = getNextPos(dir, currPos, new Pair<>(enemy.getSpeed() / 10, enemy.getSpeed() / 10));
 			ArrayList<Pair<Double, Double>> keyPoints = new ArrayList<>(this.mapInteractor.getKeyPoints());
+			boolean dirChange = false;
 			for (Pair<Double, Double> keyPoint : keyPoints){
-				if(isNotBeyondAPoint(keyPoint,currPos,dir)) {
-					if(isOverAPoint(nxtPos,keyPoint,dir)) {
-						int nextXDir = dir.getX() == 0 ? 1 : 0 ;
-						int nextYDir = 0;
-						if (keyPoints.indexOf(keyPoint) + 1 < keyPoints.size()) {
-							Double nextKeyPointY = keyPoints.get(keyPoints.indexOf(keyPoint) + 1).getY();
-							if (!nextKeyPointY.equals(keyPoint.getY())) {
-								nextYDir = nextKeyPointY > keyPoint.getY() ? 1 : -1;
-							}
-						} else {
-							System.out.println("Enemy " + c + " Reached the end");
-							this.enemies.remove(c);
-							return;
+				if(keyPointIsAfter(keyPoint,currPos,dir) && isAfterKeyPoint(nxtPos,keyPoint,dir)) {
+					int nextXDir = dir.getX() == 0 ? 1 : 0 ;
+					int nextYDir = 0;
+					if (keyPoints.indexOf(keyPoint) + 1 == keyPoints.size()) {
+						System.out.println("Enemy " + c + " Reached the end");
+						this.enemies.remove(c);
+						//applicare danno al giocatore
+					} else {
+						Double nextKeyPointY = keyPoints.get(keyPoints.indexOf(keyPoint) + 1).getY();
+						if (!nextKeyPointY.equals(keyPoint.getY())) {
+							nextYDir = nextKeyPointY > keyPoint.getY() ? 1 : -1;
 						}
 						enemy.setDirection(new Pair<>(nextXDir, nextYDir));
 						enemy.moveTo(getNextPos(enemy.getDirection(), keyPoint, new Pair<>(Math.abs(nxtPos.getY() - keyPoint.getY()), Math.abs(nxtPos.getX() - keyPoint.getX()))));
 						System.out.println("Enemy " + c + " changed direction at " + currPos.toString());
-						return;
 					}
+					dirChange = true;
+					break;
 				}
-			}			
-			enemy.moveTo(nxtPos);
-			System.out.println("Moving on enemy " + c);
+			}
+			if(!dirChange){
+				enemy.moveTo(nxtPos);
+				System.out.println("Moving on enemy " + c);
+			}
 		}
 	}
 

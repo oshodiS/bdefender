@@ -42,7 +42,7 @@ public class MapTest extends Application {
 		// END CREATE TRANSITION
 		//root.getChildren().addAll(map, path, circle);
 		root.getChildren().addAll(map, path ,circle);
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

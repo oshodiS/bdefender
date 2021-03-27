@@ -2,13 +2,16 @@ package com.bdefender.enemies.pool;
 
 
 import com.bdefender.Pair;
+import com.bdefender.map.Coordinates;
 
 import java.util.List;
 
 public interface MapInteractor {
 	
-	public List<Pair<Double, Double>> getKeyPoints();
+	public List<Coordinates> getKeyPoints();
 	
-	public Pair<Integer, Integer> getStartingDirection(); 
+	public Pair<Integer, Integer> getStartingDirection();
+
+	public Coordinates getSpawnPoint();
 
 }

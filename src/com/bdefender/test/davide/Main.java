@@ -4,22 +4,25 @@ import com.bdefender.Pair;
 import com.bdefender.enemies.EnemyFactory;
 import com.bdefender.enemies.pool.EnemiesPoolImpl;
 import com.bdefender.enemies.pool.EnemiesPoolMover;
+import com.bdefender.map.Map;
+import com.bdefender.map.MapLoader;
 import com.bdefender.towers.TowerBase;
 import com.bdefender.towers.TowerFactory;
 
 
 public class Main {
-	
-	private static final Pair<Double, Double> START_POS =  new Pair<>(0.0,0.0);
+
 	
 	 public static void main(String[] args) {
+
+		 Map map = MapLoader.getInstance().loadMap(Map.COUNTRYSIDE);
 		 
-		 EnemiesPoolImpl pool = new EnemiesPoolImpl(new MapInteractorImpl());
+		 EnemiesPoolImpl pool = new EnemiesPoolImpl(new MapInteractorImpl(map));
 		 
 		 EnemyFactory eFactory = new EnemyFactory();
 		 
-		 pool.addEnemy(eFactory.getEnemy1(START_POS));
-		 //pool.addEnemy(eFactory.getEnemy2(START_POS));
+		 //pool.addEnemy(eFactory.getEnemy1(pool.getSpawnPoint()));
+		 pool.addEnemy(eFactory.getEnemy2(pool.getSpawnPoint()));
 		 
 		 TowerFactory tFactory = new TowerFactory();
 		 TowerBase tz1 = tFactory.getTowerZone1(pool, new Pair<>(5.0,5.0));
@@ -30,7 +33,7 @@ public class Main {
 		 Thread tThread2 = new TowerThread(tz2);
 		 
 		 eThread.start();
-		 tThread1.start();
+		 //tThread1.start();
 		 //tThread2.start();
 		 
 		 
