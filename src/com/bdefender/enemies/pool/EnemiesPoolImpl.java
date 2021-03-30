@@ -65,7 +65,7 @@ public class EnemiesPoolImpl implements EnemiesPoolInteractor, EnemiesPoolMover,
 			EnemyBase enemy = enemies.get(c);
 			Pair<Integer, Integer> dir = enemy.getDirection();
 			Pair<Double, Double> currPos = enemy.getPosition();
-			Pair<Double, Double> nxtPos = getNextPos(dir, currPos, new Pair<>(enemy.getSpeed() / 10, enemy.getSpeed() / 10));
+			Pair<Double, Double> nxtPos = getNextPos(dir, currPos, new Pair<>(enemy.getSpeed() / 1000, enemy.getSpeed() / 1000));
 			ArrayList<Pair<Double, Double>> keyPoints = new ArrayList<>(this.mapInteractor.getKeyPoints());
 			boolean dirChange = false;
 			for (Pair<Double, Double> keyPoint : keyPoints){

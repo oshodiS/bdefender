@@ -6,14 +6,14 @@ import com.bdefender.Pair;
 public class EnemyFactory {
 	
 	public EnemyBase getEnemy1(Pair<Double, Double> pos) {
-		return this.enemyFromParams(20.0, 35.0, 30.0, pos);
+		return this.enemyFromParams(20.0, 35.0, 30.0, pos, 0);
 	}
 	
 	public EnemyBase getEnemy2(Pair<Double, Double> pos) {
-		return this.enemyFromParams(15.0, 50.0, 25.0, pos);
+		return this.enemyFromParams(15.0, 50.0, 25.0, pos, 1);
 	}
 	
-	private EnemyBase enemyFromParams(Double life, Double speed, Double damage, Pair<Double, Double> pos) {
+	private EnemyBase enemyFromParams(Double life, Double speed, Double damage, Pair<Double, Double> pos, Integer typeId) {
 		return new EnemyBase() {
 			
 			Pair<Double, Double> enemyPos = pos;
@@ -48,6 +48,11 @@ public class EnemyFactory {
 			@Override
 			public double getLife() {
 				return this.enemyLife;
+			}
+
+			@Override
+			public Integer getTypeId() {
+				return typeId;
 			}
 
 			@Override

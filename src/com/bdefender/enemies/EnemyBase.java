@@ -19,5 +19,7 @@ public interface EnemyBase {
 	public void setDirection(Pair<Integer, Integer> dir);
 	
 	public double getLife();
+
+	public Integer getTypeId();
 	
 }
