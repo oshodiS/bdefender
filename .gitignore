@@ -85,3 +85,5 @@ bin
 
 # Java Classpath File
 .classpath
+
+libs/
